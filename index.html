@@ -66,6 +66,15 @@
             height: 4px;
             background: var(--gold);
             border-radius: 2px;
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: all 0.6s ease;
+        }
+        
+        h2.animate:after {
+            opacity: 1;
+            transform: scaleX(1);
         }
         
         h3 {
@@ -91,6 +100,14 @@
         .section {
             padding: 100px 0;
             position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .section.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .section-title {
@@ -106,8 +123,12 @@
         .section-title h2:after {
             bottom: -10px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) scaleX(0);
             width: 50%;
+        }
+        
+        .section-title h2.animate:after {
+            transform: translateX(-50%) scaleX(1);
         }
         
         /* Header & Navigation */
@@ -118,7 +139,7 @@
             width: 100%;
             z-index: 1000;
             padding: 20px 0;
-            background: var(--dark-bg); /* Solid black background */
+            background: var(--dark-bg);
             transition: var(--transition);
         }
         
@@ -195,6 +216,35 @@
             margin-left: 25px;
         }
         
+        /* Hamburger Menu (Mobile) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .hamburger span {
+            height: 3px;
+            width: 100%;
+            background: var(--gold);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
         /* Buttons */
         .btn {
             display: inline-block;
@@ -232,8 +282,8 @@
         
         .btn-primary:hover {
             background: var(--gold-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(201, 162, 77, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(201, 162, 77, 0.5);
         }
         
         .btn-secondary {
@@ -248,8 +298,8 @@
         
         .btn-secondary:hover {
             color: var(--dark-bg);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(201, 162, 77, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(201, 162, 77, 0.4);
         }
         
         /* Hero Section */
@@ -261,7 +311,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            margin-top: 80px; /* Account for fixed header height */
+            margin-top: 80px;
         }
         
         .hero-image {
@@ -270,10 +320,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* CHANGED TO REMOVE BLACK BARS */
+            object-fit: cover;
             object-position: center;
             filter: brightness(120%);
             z-index: 1;
+            transform: translateZ(0); /* Enable GPU acceleration */
+        }
+        
+        /* Parallax effect on scroll */
+        .hero-parallax {
+            transform: translateY(0);
+            transition: transform 0.1s linear;
         }
         
         .hero-overlay {
@@ -292,6 +349,16 @@
             text-align: center;
             padding: 0 20px;
             max-width: 800px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s 0.3s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .hero-headline {
@@ -342,11 +409,27 @@
             font-size: 1.15rem;
             margin-bottom: 25px;
             color: var(--gray);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .about-text.animate p {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .about-stats {
             display: flex;
             margin-top: 30px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+        }
+        
+        .about-text.animate .about-stats {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .stat-item {
@@ -373,6 +456,14 @@
             box-shadow: var(--shadow);
             overflow: hidden;
             background: var(--light-charcoal);
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .about-content.animate .about-image {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .about-image img {
@@ -408,16 +499,25 @@
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .service-card.animate {
+            animation: fadeInUpCard 0.6s forwards;
+        }
+        
+        @keyframes fadeInUpCard {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
             border-color: rgba(201, 162, 77, 0.3);
-        }
-        
-        .service-card:hover:before {
-            opacity: 0.15;
         }
         
         .service-card:before {
@@ -476,10 +576,23 @@
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        
+        .feature-item.animate {
+            animation: fadeInRight 0.6s forwards;
+        }
+        
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
         .feature-item:hover {
-            transform: translateX(5px);
+            transform: translateX(8px) !important;
             background: rgba(40, 40, 40, 0.8);
             box-shadow: var(--shadow-hover);
         }
@@ -549,6 +662,14 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .cta-content.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .cta-headline {
@@ -578,6 +699,14 @@
             background: var(--dark-bg);
             padding-top: 70px;
             position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        footer.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .footer-grid {
@@ -669,80 +798,97 @@
         .footer-nav a:hover {
             color: var(--gold);
         }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 4rem;
-            }
-            
-            h2 {
-                font-size: 2.5rem;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .about-image {
-                width: 100%;
-                height: 350px;
-            }
-            
-            .about-stats {
-                flex-wrap: wrap;
-            }
-            
-            .stat-item {
-                margin-right: 30px;
-                margin-bottom: 20px;
-            }
-        }
-        
+
+        /* Mobile Menu Styles */
         @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
             nav ul {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease;
+            }
+
+            nav ul.show {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .nav-buttons {
                 display: none;
             }
-            
-            .nav-buttons {
-                margin-left: 0;
+
+            .mobile-buttons {
+                display: flex;
+                gap: 15px;
+                margin-top: 20px;
+                width: 100%;
+                justify-content: center;
             }
-            
+
+            /* Hero Section - Mobile Fix */
+            #hero {
+                min-height: 600px;
+                margin-top: 70px;
+            }
+
+            .hero-image {
+                object-fit: contain;
+                background-color: #000;
+            }
+
             .hero-headline {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
-            
+
             .hero-subheadline {
-                font-size: 1.2rem;
+                font-size: 1.15rem;
+                margin-bottom: 25px;
             }
-            
+
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 12px;
             }
-            
+
             .btn {
                 width: 100%;
-                max-width: 300px;
-                margin: 8px 0 !important;
+                max-width: 280px;
+                margin: 6px 0 !important;
+                padding: 12px 24px;
+                font-size: 1rem;
             }
-            
+
             h2 {
                 font-size: 2.3rem;
             }
-            
+
             .section {
                 padding: 70px 0;
             }
-            
+
             .section-title h2:after {
                 width: 60%;
             }
-            
+
             .cta-headline {
-                font-size: 2.7rem;
+                font-size: 2.4rem;
             }
-            
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -779,20 +925,20 @@
             }
             
             .service-card {
-                padding: 30px 20px;
+                padding: 25px 15px;
             }
             
             .service-icon {
-                font-size: 2.8rem;
+                font-size: 2.6rem;
             }
             
             .cta-headline {
-                font-size: 2.4rem;
+                font-size: 2.2rem;
             }
             
             .footer-nav a {
-                margin: 0 10px;
-                font-size: 0.9rem;
+                margin: 0 8px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -802,25 +948,37 @@
     <header>
         <div class="container header-container">
             <a href="#" class="logo">
-                <img src="https://i.postimg.cc/0N7kHkCd/Elev8Logo.webp" alt="ELEV8 FREIGHT Logo">
+                <img src="https://i.postimg.cc/y8ZDxpQK/logoelevate.webp" alt="ELEV8 FREIGHT Logo">
             </a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <nav>
-                <ul>
-                    <li><a href="#about" class="active">About</a></li>
+                <ul id="nav-menu">
+                    <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#why">Why Choose Us</a></li>
-                    <li class="nav-buttons">
+                    <li><a href="#contact">Contact</a></li>
+                    <!-- Mobile-only buttons -->
+                    <li class="mobile-buttons">
                         <a href="mailto:elev8freightllc@gmail.com?subject=QUOTE%20REQUEST" class="btn btn-primary">Request a Quote</a>
                         <a href="#carrier" class="btn btn-secondary">Become a Carrier</a>
                     </li>
                 </ul>
             </nav>
+            <!-- Desktop buttons -->
+            <div class="nav-buttons">
+                <a href="mailto:elev8freightllc@gmail.com?subject=QUOTE%20REQUEST" class="btn btn-primary">Request a Quote</a>
+                <a href="#carrier" class="btn btn-secondary">Become a Carrier</a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section id="hero">
-        <img src="https://i.postimg.cc/YCL52dZz/elevattehero.webp" alt="ELEV8 FREIGHT Hero Image" class="hero-image">
+        <img src="https://i.postimg.cc/YCL52dZz/elevattehero.webp" alt="ELEV8 FREIGHT Hero Image" class="hero-image" id="heroImage">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
             <h1 class="hero-headline">Elevating Freight. Delivering Confidence.</h1>
@@ -936,12 +1094,12 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo" style="margin-bottom: 25px;">
-                        <img src="https://i.postimg.cc/0N7kHkCd/Elev8Logo.webp" alt="ELEV8 FREIGHT Logo" style="height: 60px;">
+                        <img src="https://i.postimg.cc/y8ZDxpQK/logoelevate.webp" alt="ELEV8 FREIGHT Logo" style="height: 60px;">
                     </div>
                     <p>Premium freight brokerage services delivering confidence through reliability, technology, and exceptional customer support nationwide.</p>
                     <p><strong>MC:</strong> 1774887 | <strong>DOT:</strong> 4490365</p>
@@ -953,7 +1111,7 @@
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#services">Our Services</a></li>
                         <li><a href="#why">Why Choose Us</a></li>
-                        <li><a href="#carrier">Carrier Portal</a></li>
+                        <li><a href="#carrier">Carrier Agreement</a></li>
                         <li><a href="#contact">Contact Us</a></li>
                     </ul>
                 </div>
@@ -993,38 +1151,60 @@
             } else {
                 header.classList.remove('scrolled');
             }
+
+            // Parallax effect on hero image
+            const heroImage = document.getElementById('heroImage');
+            if (heroImage && window.innerWidth > 768) {
+                const offset = window.scrollY * 0.5;
+                heroImage.style.transform = `translateY(${offset}px)`;
+            }
         });
         
-        // Smooth scrolling for anchor links (excluding mailto)
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        // Close mobile menu
+                        const navMenu = document.getElementById('nav-menu');
+                        const hamburger = document.getElementById('hamburger');
+                        navMenu.classList.remove('show');
+                        hamburger.classList.remove('active');
+
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             });
         });
         
-        // Set active navigation link based on scroll position
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav ul li a');
+        // Active link highlighting
+        const sections = document.querySelectorAll('.section, #hero');
+        const navLinks = document.querySelectorAll('nav ul li a:not(.btn)');
+        const footer = document.querySelector('footer');
         
         window.addEventListener('scroll', () => {
             let current = '';
+            const scrollPos = window.scrollY + 100;
             
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - 150;
-                if(pageYOffset >= sectionTop) {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
                     current = section.getAttribute('id');
                 }
             });
+
+            if (scrollPos >= footer.offsetTop) {
+                current = 'contact';
+            }
             
             navLinks.forEach(link => {
                 link.classList.remove('active');
@@ -1032,6 +1212,56 @@
                     link.classList.add('active');
                 }
             });
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            hamburger.classList.toggle('active');
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    
+                    // Staggered animations for cards
+                    if (entry.target.classList.contains('services-grid') || entry.target.classList.contains('features-grid')) {
+                        const items = entry.target.children;
+                        Array.from(items).forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate');
+                            }, 150 * index);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections
+        document.querySelectorAll('.section, .about-content, .cta-content, footer').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animate section titles separately
+        document.querySelectorAll('.section-title h2').forEach(el => {
+            const titleObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, { threshold: 0.1 });
+            titleObserver.observe(el);
         });
     </script>
 </body>
