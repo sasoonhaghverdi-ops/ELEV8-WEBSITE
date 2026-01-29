@@ -6,11 +6,27 @@
 <meta name="description" content="ELEV8 FREIGHT: MC#1774887 | DOT#4490365. Premium FTL/LTL freight brokerage with 24/7 dispatch, real-time tracking, vetted carriers, and transparent pricing nationwide.">
 <meta name="keywords" content="freight brokerage, trucking company, FTL, LTL, logistics, freight broker, MC1774887, DOT4490365">
 <title>ELEV8 FREIGHT | Premium Freight Brokerage Solutions</title>
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<!-- Open Graph Tags for Social Sharing -->
-<meta property="og:title" content="ELEV8 FREIGHT | Premium Freight Brokerage Solutions">
-<meta property="og:description" content="MC#1774887 | DOT#4490365. Reliable freight solutions with 99.8% on-time delivery.">
+
+<!-- Favicon -->
+<link rel="icon" href="https://www.elev8freight.com/images/Elev8FAV.webp" type="image/webp">
+
+<!-- Open Graph / Rich Link Preview -->
+<meta property="og:title" content="ELEV8 FREIGHT | Premium Freight Brokerage">
+<meta property="og:description" content="MC#1774887 • DOT#4490365. Reliable freight solutions with 99.8% on-time delivery.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://www.elev8freight.com/">
+<meta property="og:image" content="https://i.postimg.cc/7hLzGqFv/elev8-logo-og-1200x630.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/webp">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ELEV8 FREIGHT | Premium Freight Brokerage">
+<meta name="twitter:description" content="MC#1774887 • DOT#4490365. Reliable freight solutions with 99.8% on-time delivery.">
+<meta name="twitter:image" content="https://i.postimg.cc/7hLzGqFv/elev8-logo-og-1200x630.webp">
+<meta name="twitter:site" content="@ELEV8Freight">
+
 <style>
 /* Base Styles & Variables - UPDATED GRAY FOR ACCESSIBILITY */
 :root {
@@ -263,7 +279,7 @@ color: var(--dark-bg);
 transform: translateY(-3px);
 box-shadow: 0 6px 20px rgba(201, 162, 77, 0.4);
 }
-/* Hero Section - WITH LICENSE BADGE */
+/* Hero Section */
 #hero {
 height: 100vh;
 min-height: 700px;
@@ -473,7 +489,7 @@ font-style: italic;
 position: relative;
 z-index: 1;
 }
-/* Visual Break Section - REVISED TITLE & IMAGE */
+/* Visual Break Section */
 .visual-break {
 background: linear-gradient(135deg, var(--charcoal) 0%, var(--light-charcoal) 100%);
 padding: 100px 0;
@@ -521,7 +537,7 @@ transition: var(--transition);
 .visual-break-image:hover img {
 transform: scale(1.05);
 }
-/* Why Choose Us Section - 2x2 SQUARE CARDS */
+/* Why Choose Us - 2x2 SQUARE CARDS */
 #why {
 background-color: var(--charcoal);
 }
@@ -614,7 +630,7 @@ position: relative;
 z-index: 1;
 line-height: 1.4;
 }
-/* Testimonials Section - WITH AVATARS */
+/* Testimonials */
 #testimonials {
 background: linear-gradient(135deg, var(--light-charcoal) 0%, var(--charcoal) 100%);
 text-align: center;
@@ -710,7 +726,7 @@ justify-content: center;
 gap: 20px;
 flex-wrap: wrap;
 }
-/* Footer - WITH TRUST BADGES & CLICKABLE ELEMENTS */
+/* Footer */
 footer {
 background: var(--dark-bg);
 padding-top: 70px;
@@ -815,10 +831,6 @@ grid-template-columns: 1fr;
 .visual-break-content {
 flex-direction: column;
 }
-.visual-break-text,
-.visual-break-image {
-transform: none;
-}
 }
 @media (max-width: 768px) {
 .skip-link {
@@ -847,7 +859,6 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 nav ul li {
 margin: 18px 0;
 }
-/* Hero fix */
 #hero {
 min-height: 600px;
 margin-top: 70px;
@@ -890,63 +901,34 @@ width: 60%;
 .cta-headline {
 font-size: 2.4rem;
 }
-/* NO MORE :after CONTENT ON MOBILE — FIXED */
+/* Remove duplicate mobile button text */
 .btn:after {
 content: none !important;
 }
+/* Show LEFT SIDE of hero image on mobile */
+.hero-image {
+object-position: left center;
+}
 }
 @media (max-width: 480px) {
-h1 {
-font-size: 3.2rem;
-}
-h2 {
-font-size: 2.1rem;
-}
-h3 {
-font-size: 1.65rem;
-}
-.logo img {
-height: 40px;
-}
-header.scrolled .logo img {
-height: 35px;
-}
-.stat-number {
-font-size: 2.2rem;
-}
-.stat-label {
-font-size: 0.95rem;
-}
-.service-card {
-padding: 20px 15px;
-height: auto;
-min-height: 280px;
-}
-.service-icon {
-font-size: 2.6rem;
-}
-.cta-headline {
-font-size: 2.2rem;
-}
-.footer-nav a {
-margin: 0 8px;
-font-size: 0.85rem;
-}
-.trust-badges span {
-display: block;
-margin: 8px 0;
-}
-.testimonial-avatar {
-width: 60px;
-height: 60px;
-}
+h1 { font-size: 3.2rem; }
+h2 { font-size: 2.1rem; }
+h3 { font-size: 1.65rem; }
+.logo img { height: 40px; }
+header.scrolled .logo img { height: 35px; }
+.stat-number { font-size: 2.2rem; }
+.stat-label { font-size: 0.95rem; }
+.service-card { padding: 20px 15px; height: auto; min-height: 280px; }
+.service-icon { font-size: 2.6rem; }
+.cta-headline { font-size: 2.2rem; }
+.footer-nav a { margin: 0 8px; font-size: 0.85rem; }
+.trust-badges span { display: block; margin: 8px 0; }
+.testimonial-avatar { width: 60px; height: 60px; }
 }
 </style>
 </head>
 <body>
-<!-- Skip Navigation Link -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
-<!-- Header & Navigation -->
 <header>
 <div class="container header-container">
 <a href="#" class="logo">
@@ -969,7 +951,6 @@ height: 60px;
 </div>
 </header>
 
-<!-- Hero Section -->
 <section id="hero">
 <img src="https://i.postimg.cc/YCL52dZz/elevattehero.webp" alt="ELEV8 FREIGHT Hero Image: Professional trucking logistics" class="hero-image">
 <div class="hero-overlay"></div>
@@ -979,14 +960,13 @@ height: 60px;
 <div class="hero-license-badge">MC# 1774887 • DOT# 4490365</div>
 <p class="hero-subheadline">Reliable, expedited logistics solutions covering the nation with speed and precision.</p>
 <div class="hero-buttons">
-<a href="mailto:elev8freightllc@gmail.com?subject=QUOTE%20REQUEST:%20Origin%20to%20Destination" class="btn btn-primary">Request a Quote</a>
-<a href="mailto:elev8freightllc@gmail.com?subject=CARRIER%20APPLICATION" class="btn btn-primary">Become a Carrier</a>
-<a href="#" class="btn btn-primary">Become a Shipper</a> <!-- Replace # with actual link later -->
+<a href="https://www.elev8freight.com/documents/Elev8_Freight_Shipper_Broker_Agreement.pdf" class="btn btn-primary">Request a Quote</a>
+<a href="https://www.elev8freight.com/documents/Elev8_Freight_Broker_Carrier_Agreement.pdf" class="btn btn-primary">Become a Carrier</a>
+<a href="https://www.elev8freight.com/documents/Elev8_Freight_Shipper_Broker_Agreement.pdf" class="btn btn-primary">Become a Shipper</a>
 </div>
 </div>
 </section>
 
-<!-- About Section -->
 <section id="about" class="section">
 <div class="container">
 <div class="about-content">
@@ -1017,7 +997,6 @@ height: 60px;
 </div>
 </section>
 
-<!-- Services Section -->
 <section id="services" class="section">
 <div class="container">
 <div class="section-title">
@@ -1052,7 +1031,6 @@ height: 60px;
 </div>
 </section>
 
-<!-- Visual Break Section - REVISED -->
 <section class="visual-break">
 <div class="container">
 <div class="visual-break-content">
@@ -1071,7 +1049,6 @@ height: 60px;
 </div>
 </section>
 
-<!-- Why Choose Us Section - 2x2 SQUARE CARDS -->
 <section id="why" class="section">
 <div class="container">
 <div class="section-title">
@@ -1099,7 +1076,6 @@ height: 60px;
 </div>
 </section>
 
-<!-- Testimonials Section - WITH AVATARS -->
 <section id="testimonials" class="section">
 <div class="container">
 <div class="section-title">
@@ -1128,22 +1104,20 @@ height: 60px;
 </div>
 </section>
 
-<!-- Call to Action Section -->
 <section id="cta" class="section">
 <div class="container">
 <div class="cta-content">
 <h2 class="cta-headline">Ready to Elevate Your Freight Experience?</h2>
 <p class="cta-subheadline">Join thousands of satisfied clients who trust ELEV8 FREIGHT for reliable, efficient, and transparent logistics solutions.</p>
 <div class="cta-buttons">
-<a href="mailto:elev8freightllc@gmail.com?subject=QUOTE%20REQUEST:%20Origin%20to%20Destination" class="btn btn-primary">Request a Quote Today</a>
-<a href="mailto:elev8freightllc@gmail.com?subject=CARRIER%20APPLICATION" class="btn btn-primary">Carrier Application</a>
-<a href="#" class="btn btn-primary">Become a Shipper</a> <!-- Replace # with actual link later -->
+<a href="https://www.elev8freight.com/documents/Elev8_Freight_Shipper_Broker_Agreement.pdf" class="btn btn-primary">Request a Quote Today</a>
+<a href="https://www.elev8freight.com/documents/Elev8_Freight_Broker_Carrier_Agreement.pdf" class="btn btn-primary">Carrier Application</a>
+<a href="https://www.elev8freight.com/documents/Elev8_Freight_Shipper_Broker_Agreement.pdf" class="btn btn-primary">Become a Shipper</a>
 </div>
 </div>
 </div>
 </section>
 
-<!-- Footer -->
 <footer id="contact">
 <div class="container">
 <div class="footer-grid">
@@ -1166,7 +1140,7 @@ height: 60px;
 <li><a href="#about">About Us</a></li>
 <li><a href="#services">Our Services</a></li>
 <li><a href="#why">Why Choose Us</a></li>
-<li><a href="mailto:elev8freightllc@gmail.com?subject=CARRIER%20AGREEMENT%20REQUEST">Carrier Agreement</a></li>
+<li><a href="https://www.elev8freight.com/documents/Elev8_Freight_Broker_Carrier_Agreement.pdf">Carrier Agreement</a></li>
 <li><a href="#contact">Contact Us</a></li>
 </ul>
 </div>
@@ -1190,7 +1164,7 @@ height: 60px;
 <div class="footer-nav">
 <a href="mailto:elev8freightllc@gmail.com?subject=PRIVACY%20POLICY%20REQUEST">Privacy Policy</a>
 <a href="mailto:elev8freightllc@gmail.com?subject=TERMS%20OF%20SERVICE%20REQUEST">Terms of Service</a>
-<a href="mailto:elev8freightllc@gmail.com?subject=CARRIER%20AGREEMENT%20REQUEST">Carrier Agreement</a>
+<a href="https://www.elev8freight.com/documents/Elev8_Freight_Broker_Carrier_Agreement.pdf">Carrier Agreement</a>
 <a href="mailto:elev8freightllc@gmail.com?subject=SITEMAP%20REQUEST">Sitemap</a>
 </div>
 </div>
@@ -1231,7 +1205,7 @@ document.querySelector('#main-content').focus();
 });
 
 // Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('[href^="#"]').forEach(anchor => {
 anchor.addEventListener('click', function(e) {
 if(this.getAttribute('href').startsWith('#')) {
 e.preventDefault();
