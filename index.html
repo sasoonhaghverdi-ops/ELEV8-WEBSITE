@@ -66,15 +66,6 @@
             height: 4px;
             background: var(--gold);
             border-radius: 2px;
-            opacity: 0;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: all 0.6s ease;
-        }
-        
-        h2.animate:after {
-            opacity: 1;
-            transform: scaleX(1);
         }
         
         h3 {
@@ -100,14 +91,6 @@
         .section {
             padding: 100px 0;
             position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .section.animate {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .section-title {
@@ -123,12 +106,8 @@
         .section-title h2:after {
             bottom: -10px;
             left: 50%;
-            transform: translateX(-50%) scaleX(0);
+            transform: translateX(-50%);
             width: 50%;
-        }
-        
-        .section-title h2.animate:after {
-            transform: translateX(-50%) scaleX(1);
         }
         
         /* Header & Navigation */
@@ -210,13 +189,14 @@
             color: var(--gold);
         }
         
-        .nav-buttons {
+        /* Desktop Buttons */
+        .desktop-buttons {
             display: flex;
             align-items: center;
             margin-left: 25px;
         }
         
-        /* Hamburger Menu (Mobile) */
+        /* Hamburger Menu (Mobile Only) */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -243,6 +223,15 @@
         }
         .hamburger.active span:nth-child(3) {
             transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
+        /* Mobile-only buttons container */
+        .mobile-buttons {
+            display: none;
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: center;
         }
         
         /* Buttons */
@@ -324,13 +313,6 @@
             object-position: center;
             filter: brightness(120%);
             z-index: 1;
-            transform: translateZ(0); /* Enable GPU acceleration */
-        }
-        
-        /* Parallax effect on scroll */
-        .hero-parallax {
-            transform: translateY(0);
-            transition: transform 0.1s linear;
         }
         
         .hero-overlay {
@@ -349,16 +331,6 @@
             text-align: center;
             padding: 0 20px;
             max-width: 800px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s 0.3s forwards;
-        }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         
         .hero-headline {
@@ -409,27 +381,11 @@
             font-size: 1.15rem;
             margin-bottom: 25px;
             color: var(--gray);
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .about-text.animate p {
-            opacity: 1;
-            transform: translateX(0);
         }
         
         .about-stats {
             display: flex;
             margin-top: 30px;
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
-        }
-        
-        .about-text.animate .about-stats {
-            opacity: 1;
-            transform: translateX(0);
         }
         
         .stat-item {
@@ -456,14 +412,6 @@
             box-shadow: var(--shadow);
             overflow: hidden;
             background: var(--light-charcoal);
-            opacity: 0;
-            transform: translateX(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .about-content.animate .about-image {
-            opacity: 1;
-            transform: translateX(0);
         }
         
         .about-image img {
@@ -499,19 +447,6 @@
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        
-        .service-card.animate {
-            animation: fadeInUpCard 0.6s forwards;
-        }
-        
-        @keyframes fadeInUpCard {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         
         .service-card:hover {
@@ -576,23 +511,10 @@
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow);
-            opacity: 0;
-            transform: translateX(30px);
-        }
-        
-        .feature-item.animate {
-            animation: fadeInRight 0.6s forwards;
-        }
-        
-        @keyframes fadeInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
         
         .feature-item:hover {
-            transform: translateX(8px) !important;
+            transform: translateX(5px);
             background: rgba(40, 40, 40, 0.8);
             box-shadow: var(--shadow-hover);
         }
@@ -662,14 +584,6 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .cta-content.animate {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .cta-headline {
@@ -699,14 +613,6 @@
             background: var(--dark-bg);
             padding-top: 70px;
             position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        footer.animate {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .footer-grid {
@@ -799,7 +705,7 @@
             color: var(--gold);
         }
 
-        /* Mobile Menu Styles */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -827,19 +733,15 @@
                 margin: 15px 0;
             }
 
-            .nav-buttons {
+            .desktop-buttons {
                 display: none;
             }
 
             .mobile-buttons {
                 display: flex;
-                gap: 15px;
-                margin-top: 20px;
-                width: 100%;
-                justify-content: center;
             }
 
-            /* Hero Section - Mobile Fix */
+            /* Hero fix */
             #hero {
                 min-height: 600px;
                 margin-top: 70px;
@@ -859,7 +761,8 @@
                 margin-bottom: 25px;
             }
 
-            .hero-buttons {
+            .hero-buttons,
+            .cta-buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 12px;
@@ -887,11 +790,6 @@
 
             .cta-headline {
                 font-size: 2.4rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
             }
         }
         
@@ -950,35 +848,31 @@
             <a href="#" class="logo">
                 <img src="https://i.postimg.cc/y8ZDxpQK/logoelevate.webp" alt="ELEV8 FREIGHT Logo">
             </a>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
             <nav>
-                <ul id="nav-menu">
+                <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#why">Why Choose Us</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <!-- Mobile-only buttons -->
-                    <li class="mobile-buttons">
-                        <a href="mailto:elev8freightllc@gmail.com?subject=QUOTE%20REQUEST" class="btn btn-primary">Request a Quote</a>
-                        <a href="#carrier" class="btn btn-secondary">Become a Carrier</a>
-                    </li>
                 </ul>
             </nav>
             <!-- Desktop buttons -->
-            <div class="nav-buttons">
+            <div class="desktop-buttons">
                 <a href="mailto:elev8freightllc@gmail.com?subject=QUOTE%20REQUEST" class="btn btn-primary">Request a Quote</a>
                 <a href="#carrier" class="btn btn-secondary">Become a Carrier</a>
+            </div>
+            <!-- Hamburger for mobile -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section id="hero">
-        <img src="https://i.postimg.cc/YCL52dZz/elevattehero.webp" alt="ELEV8 FREIGHT Hero Image" class="hero-image" id="heroImage">
+        <img src="https://i.postimg.cc/YCL52dZz/elevattehero.webp" alt="ELEV8 FREIGHT Hero Image" class="hero-image">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
             <h1 class="hero-headline">Elevating Freight. Delivering Confidence.</h1>
@@ -1151,13 +1045,6 @@
             } else {
                 header.classList.remove('scrolled');
             }
-
-            // Parallax effect on hero image
-            const heroImage = document.getElementById('heroImage');
-            if (heroImage && window.innerWidth > 768) {
-                const offset = window.scrollY * 0.5;
-                heroImage.style.transform = `translateY(${offset}px)`;
-            }
         });
         
         // Smooth scrolling for anchor links
@@ -1170,11 +1057,13 @@
                     
                     const targetElement = document.querySelector(targetId);
                     if(targetElement) {
-                        // Close mobile menu
-                        const navMenu = document.getElementById('nav-menu');
+                        // Close mobile menu if open
+                        const navList = document.querySelector('nav ul');
                         const hamburger = document.getElementById('hamburger');
-                        navMenu.classList.remove('show');
-                        hamburger.classList.remove('active');
+                        if (navList && navList.classList.contains('show')) {
+                            navList.classList.remove('show');
+                            hamburger.classList.remove('active');
+                        }
 
                         window.scrollTo({
                             top: targetElement.offsetTop - 80,
@@ -1185,9 +1074,9 @@
             });
         });
         
-        // Active link highlighting
-        const sections = document.querySelectorAll('.section, #hero');
-        const navLinks = document.querySelectorAll('nav ul li a:not(.btn)');
+        // Active navigation link based on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav ul li a');
         const footer = document.querySelector('footer');
         
         window.addEventListener('scroll', () => {
@@ -1214,54 +1103,12 @@
             });
         });
 
-        // Mobile Menu Toggle
+        // Mobile hamburger toggle
         const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
+        const navList = document.querySelector('nav ul');
         hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
+            navList.classList.toggle('show');
             hamburger.classList.toggle('active');
-        });
-
-        // Scroll Animation Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                    
-                    // Staggered animations for cards
-                    if (entry.target.classList.contains('services-grid') || entry.target.classList.contains('features-grid')) {
-                        const items = entry.target.children;
-                        Array.from(items).forEach((item, index) => {
-                            setTimeout(() => {
-                                item.classList.add('animate');
-                            }, 150 * index);
-                        });
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // Observe sections
-        document.querySelectorAll('.section, .about-content, .cta-content, footer').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Animate section titles separately
-        document.querySelectorAll('.section-title h2').forEach(el => {
-            const titleObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                    }
-                });
-            }, { threshold: 0.1 });
-            titleObserver.observe(el);
         });
     </script>
 </body>
